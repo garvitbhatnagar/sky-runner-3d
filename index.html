@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Sky Runner 3D - Endless Horizon</title>
+
+    <!-- Mobile & PWA Optimization -->
+    <meta name="theme-color" content="#0a0e17">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sky Runner 3D">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 3D Three.js WebGL Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay Layer -->
+    <div class="ui-layer">
+
+        <!-- 1. START MENU -->
+        <div id="start-menu" class="interactive">
+            <div class="menu-card">
+                <div class="game-logo">
+                    <span class="logo-badge">⚡ 3D Physics Runner</span>
+                    <h1 class="game-title">SKY RUNNER</h1>
+                    <span class="game-subtitle">Endless Horizon • Infinite Levels (1 → ∞)</span>
+                </div>
+
+                <div class="high-score-chip">
+                    <span>🏆 High Score:</span>
+                    <span id="menu-high-score">0</span>
+                </div>
+
+                <div class="menu-buttons">
+                    <button id="btn-start" class="btn-primary" aria-label="Start Game">
+                        <span>▶</span> START GAME
+                    </button>
+                    <button id="btn-quit" class="btn-danger" aria-label="Quit Game">
+                        <span>✕</span> QUIT GAME
+                    </button>
+                </div>
+
+                <div class="audio-toggles">
+                    <button id="btn-music-toggle" class="btn-audio">🎵 Music: ON</button>
+                    <button id="btn-sfx-toggle" class="btn-audio">🔊 SFX: ON</button>
+                </div>
+
+                <div class="controls-guide">
+                    <div class="guide-row">
+                        <span>Steer Lanes:</span>
+                        <span><span class="guide-key">A</span> / <span class="guide-key">D</span> or <span class="guide-key">◀</span> <span class="guide-key">▶</span> or <span class="guide-key">Swipe</span></span>
+                    </div>
+                    <div class="guide-row">
+                        <span>Jump Over Rocks:</span>
+                        <span><span class="guide-key">Space</span> / <span class="guide-key">W</span> or <span class="guide-key">Swipe Up</span></span>
+                    </div>
+                    <div class="guide-row">
+                        <span>Slide / Duck:</span>
+                        <span><span class="guide-key">S</span> or <span class="guide-key">Swipe Down</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. IN-GAME HUD -->
+        <div id="hud" class="hidden">
+            <div class="hud-top-bar interactive">
+                <!-- Level Progress -->
+                <div class="hud-level-container">
+                    <div class="level-header">
+                        <span id="hud-level">LVL 1</span>
+                        <span>ENDLESS ∞</span>
+                    </div>
+                    <div class="level-progress-track">
+                        <div id="hud-level-bar" class="level-progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Distance -->
+                <div class="hud-chip">
+                    <span class="chip-icon">🏃</span>
+                    <div class="chip-data">
+                        <span class="chip-label">Distance</span>
+                        <span id="hud-distance" class="chip-value">0m</span>
+                    </div>
+                </div>
+
+                <!-- Gold Coins -->
+                <div class="hud-chip">
+                    <span class="chip-icon">🪙</span>
+                    <div class="chip-data">
+                        <span class="chip-label">Coins</span>
+                        <span id="hud-coins" class="chip-value">0</span>
+                    </div>
+                </div>
+
+                <!-- Score -->
+                <div class="hud-chip">
+                    <span class="chip-icon">⭐</span>
+                    <div class="chip-data">
+                        <span class="chip-label">Score</span>
+                        <span id="hud-score" class="chip-value">0</span>
+                    </div>
+                </div>
+
+                <!-- Pause Button -->
+                <button id="btn-pause" class="btn-icon" aria-label="Pause">❚❚</button>
+            </div>
+
+            <!-- Level Up Toast Notification -->
+            <div id="level-up-toast" class="hidden">
+                ⚡ LEVEL 2 - SPEED BOOST! ⚡
+            </div>
+
+            <!-- Mobile Touch Controls for Phones & Tablets -->
+            <div class="mobile-controls interactive">
+                <div class="touch-cluster">
+                    <button id="touch-left" class="touch-btn" aria-label="Steer Left">◀</button>
+                    <button id="touch-right" class="touch-btn" aria-label="Steer Right">▶</button>
+                </div>
+                <div class="touch-cluster">
+                    <button id="touch-slide" class="touch-btn" aria-label="Slide">▼</button>
+                    <button id="touch-jump" class="touch-btn" aria-label="Jump">▲</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. PAUSE MENU -->
+        <div id="pause-menu" class="modal-backdrop interactive hidden">
+            <div class="modal-content">
+                <h2 class="modal-title">GAME PAUSED</h2>
+                <div class="menu-buttons">
+                    <button id="btn-resume" class="btn-primary">RESUME</button>
+                    <button id="btn-restart" class="btn-secondary">RESTART</button>
+                    <button id="btn-menu" class="btn-danger">QUIT TO MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. GAME OVER SCREEN -->
+        <div id="game-over" class="modal-backdrop interactive hidden">
+            <div class="modal-content">
+                <div id="go-new-best-badge" class="new-best-badge hidden">★ NEW HIGH SCORE! ★</div>
+                <h2 class="modal-title">RUN COMPLETED</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">Final Score</span>
+                        <span id="go-score" class="stat-val" style="color:var(--primary);">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">High Score</span>
+                        <span id="go-highscore" class="stat-val" style="color:var(--accent);">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Distance</span>
+                        <span id="go-distance" class="stat-val">0m</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Coins</span>
+                        <span id="go-coins" class="stat-val" style="color:#ffd700;">0</span>
+                    </div>
+                </div>
+
+                <div class="stat-box" style="margin-bottom: 20px; width: 100%;">
+                    <span class="stat-label">Difficulty Reached</span>
+                    <span id="go-level" class="stat-val" style="color:#00d2ff;">Level 1</span>
+                </div>
+
+                <div class="menu-buttons">
+                    <button id="btn-retry" class="btn-primary">TRY AGAIN</button>
+                    <button id="btn-gameover-menu" class="btn-secondary">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 3D Engine & Scripts (100% Offline Capable) -->
+    <script src="js/three.min.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/world.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
