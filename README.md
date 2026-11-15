@@ -1,39 +1,90 @@
-# ⚡ Sky Runner 3D - Endless Horizon
+# ⚡ Sky Runner 3D – Endless Horizon (Pro Edition)
 
-An endless 3D runner game built with **Python**, **Three.js**, **Web Audio**, and **real-time 3D physics**. Designed to run on **Windows**, **Android**, and **iOS**.
+A commercial-grade browser & desktop 3D endless runner built with **Three.js**, **Web Audio**, **Python**, and **Supabase Realtime**.
+
+Deploys seamlessly on **Vercel**, **Netlify**, **GitHub Pages**, and **Windows Desktop** with zero budget and zero external paid dependencies.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Upgraded Pro Features
 
-1. **3D Graphics & Visuals**:
-   - Vibrant blue sky with drifting procedural 3D white clouds.
-   - 3-lane asphalt road with animated speed markings and red/white hazard curbs.
-   - Lush rolling green terrain on both sides populated with 3D trees (pines & deciduous) and roadside vegetation.
-   - Articulated 3D runner character with dynamic running strides, jumping, sliding, lane-switching bank tilt, and drop shadow.
-   - 3D faceted rock obstacles (jumpable rocks and tall boulders).
-   - Spinning 3D gold coins with metallic specular shine and pickup particle sparkle bursts.
+### 1. 🎨 10 Expandable 3D Worlds & Environments
+Dynamic biomes with custom sky gradients, horizon fog, ground terrain, lighting, roadside decorations, and atmospheric particle systems:
+1. **Green Forest** – Sunlit forest trail bordered by lush evergreen pines and rolling hills.
+2. **Snow Mountains** – Alpine pass surrounded by frosted pines and swirling snow flurries.
+3. **Desert Highway** – Scorching sunbaked highway flanked by giant saguaro cacti and red dunes.
+4. **Neon Cyber City** – Synthwave metropolis with glowing neon grids and cyber skyscrapers.
+5. **Tropical Island** – Golden sand road bordered by turquoise ocean waters and coconut palms.
+6. **Space Station** – Orbital catwalk floating above Earth with asteroid hazard fields.
+7. **Volcano Valley** – Obsidian highway winding past boiling magma rivers and smoke plumes.
+8. **Futuristic Sky City** – Glass skyway suspended high in the clouds between aerodynamic spires.
+9. **Night Highway** – Midnight expressway illuminated by streetlights with distant skyline views.
+10. **Ancient Temple** – Overgrown stone path passing carved ruin pillars and flame braziers.
 
-2. **Real-Time Physics Engine**:
-   - Gravity, vertical jump trajectory, and collision detection.
-   - Spring-damped lane switching physics across 3 lanes (Left: -2.7, Center: 0.0, Right: +2.7).
-   - Dynamic crouching / slide physics to duck under low hazards or pull down quickly from mid-air.
-   - Coin attraction / magnet pull physics.
+*Biomes dynamically progress every 2 levels or can be manually selected in Settings.*
 
-3. **100 Progressive Levels**:
-   - Speed dynamically accelerates from Level 1 ($20$ units/s) up to Level 100 ($66$ units/s).
-   - Obstacle frequency and pattern complexity scale with each level (dual-lane blockades, staggered lane switches, jump arcs).
-   - Level Up fanfare notification toast with speed boost announcements.
+---
 
-4. **Procedural Synthesizer Audio**:
-   - Dynamic synthwave / chiptune runner soundtrack generated entirely via Web Audio API oscillators (no external MP3 files needed, 100% offline).
-   - Sound effects: Jump whoosh, slide swoosh, dual-tone crystal coin chime, rock collision crunch, and level up fanfare.
-   - Toggle buttons for Music and SFX.
+### 2. 🥷 12 Unlockable Character Skins & 3D Cosmetic Shop
+- **12 Unique 3D Runner Skins**:
+  - *Horizon Runner* (Default Athletic Suit)
+  - *Cyber Ninja* (Stealth Carbon Suit with Cyan Lines)
+  - *Neon Blaze* (Synthwave Magenta Speedster)
+  - *Arctic Explorer* (Thermal Polar Parka & Goggles)
+  - *Desert Nomad* (Wasteland Survivor Cloak)
+  - *Cosmic Astronaut* (NASA Space Suit with Gold Visor)
+  - *Crimson Samurai* (Lacquered Red Battle Armor)
+  - *Golden Champion* (Prestige 24k Pure Gold Plating)
+  - *Toxic Raider* (Biohazard Spec Ops Suit)
+  - *Shadow Phantom* (Dark Matter Nebula Entity)
+  - *Retro Arcade* (1984 8-Bit Pixel Attire)
+  - *Mecha Titan* (Heavy Hydraulic Exoskeleton)
+- **Cosmetic Speed Trails**: Cyan Plasma, Golden Stardust, Neon Fire, Void Smoke.
+- **Headwear & Accessories**: Royal Gold Crown, Cyber Halo, Tactical VR Goggles, Shinobi Headband.
+- **Interactive 3D Shop Viewport**: Live spinning 3D character preview rendered inside the shop modal!
+- **100% In-Game Earned Coins**: Zero real-money microtransactions.
 
-5. **Start Menu, HUD & Game Over**:
-   - Cinematic Start Menu with animated title, **START GAME** and **QUIT GAME** buttons, controls guide, and high score display.
-   - In-game HUD: Level progress bar (1 to 100), Distance counter (m), Coins collected, Score, and Pause button.
-   - Pause menu and Game Over modal with score breakdown and high score tracking (`scores.json` + `localStorage`).
+---
+
+### 3. 🎁 7-Day Daily Rewards System
+- Day 1: **+50 Coins**
+- Day 2: **+75 Coins**
+- Day 3: **+100 Coins**
+- Day 4: **+150 Coins**
+- Day 5: **+200 Coins**
+- Day 6: **+300 Coins**
+- Day 7: **+500 Coins (MEGA REWARD)**
+- Interactive 7-day visual calendar with claimed badges and glowing claim targets.
+- 20-hour anti-cheat cooldown timer with countdown display.
+- Coin shower celebration particle animation.
+
+---
+
+### 4. 🏆 Global Online Leaderboard
+- **Rankings**: Daily, Weekly, and All-Time leaderboards.
+- **Podium Highlights**: Golden Trophy (#1), Silver Medal (#2), and Bronze Medal (#3) podiums.
+- **Player Nicknames**: Customizable nicknames with automatic guest ID assignment.
+- **Anti-Cheat Validation**: Server and client mathematical score validation rules.
+- **Backend**: Supabase free-tier database with local fallback cache.
+
+---
+
+### 5. 🌐 Real-Time Online Multiplayer (Up to 4 Players)
+- **Room Creation**: Instant 6-character room code generation (`SKY-XXXX`) with 1-click clipboard copy.
+- **Join by Code**: Race against friends or competitors worldwide.
+- **Live 3D Competitor Rendering**: Opponents rendered directly on the road with overhead nametags.
+- **Real-Time Position Sync**: High-frequency physics, lane switching, jumping, sliding, and score sync.
+- **Live Race Standings HUD**: In-race ranking card showing distances, scores, and status.
+- **Multiplayer Results Podium**: Placement ranks (1st to 4th), medals, and bonus coin awards.
+- Built on **Supabase Realtime** with zero-config local multi-tab/LAN `BroadcastChannel` testing out of the box!
+
+---
+
+### 6. 📱 Responsive Mobile & Tablet Controls
+- Touch swipes (Left/Right steer, Up jump, Down slide).
+- Ergonomic on-screen tactile button clusters.
+- Dynamic screen scaling and DPR capping for smooth 60 FPS on Android and iOS.
+- Graphic fidelity selector in Settings (High, Medium, Low).
 
 ---
 
@@ -44,67 +95,48 @@ An endless 3D runner game built with **Python**, **Three.js**, **Web Audio**, an
 | **Steer Left** | `A` or `Left Arrow` | Swipe Left or tap `◀` |
 | **Steer Right** | `D` or `Right Arrow` | Swipe Right or tap `▶` |
 | **Jump** | `Space` / `W` / `Up Arrow` | Swipe Up or tap `▲` |
-| **Slide / Crouch** | `S` / `Down Arrow` | Swipe Down or tap `▼` |
+| **Slide / Duck** | `S` / `Down Arrow` | Swipe Down or tap `▼` |
 | **Pause / Resume** | `P` or `Escape` | Tap Pause button `❚❚` |
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run Locally
 
-### 1. Run with Custom Domain (https://sky-runner-3d.com)
-You can run the game directly under **`https://sky-runner-3d.com`**:
-1. **Configure Local Domain**:
-   Right-click `setup_local_domain.bat` and select **"Run as Administrator"** (or run `python setup_domain.py`). This adds `sky-runner-3d.com` to your Windows hosts file.
-2. **Start the Secure HTTPS Server**:
-   ```bash
-   python main.py --https
-   ```
-   Or:
-   ```bash
-   python https_server.py
-   ```
-   Your browser will automatically open **`https://sky-runner-3d.com`**!
-
----
-
-### 2. Standard Windows Desktop Launch
-Run:
+### 1. Launch with Python
 ```bash
 python main.py
 ```
-- Automatically launches a native desktop window with hardware acceleration.
-- Starts the local server and prints a mobile **QR Code** in your terminal.
+- Starts local Python server on `http://localhost:8000`.
+- Displays mobile Wi-Fi IP and terminal QR code for phone play.
+- Launches native desktop window or default browser.
 
-If you prefer to play in your default browser:
+### 2. Run with Custom HTTPS Domain
 ```bash
-python main.py --browser
+python main.py --https
+# Opens https://sky-runner-3d.com
 ```
 
----
-
-### 3. Play on Android & iOS (Instant Mobile Play)
-1. Run `python main.py` on your computer while connected to your Wi-Fi.
-2. Point your **Android phone camera** or **iPhone / iPad camera** at the **QR Code** in your terminal.
-3. Tap the link to play in full screen with smooth touch swipe controls!
-4. *(Optional)* Tap **"Add to Home Screen"** in Chrome (Android) or Safari (iOS) to install it as an offline PWA app!
-
----
-
-### 4. Deploying Live to the World (Global Hosting)
-The repository is pre-configured with **zero-config deployment files** for free worldwide hosting:
-
-- **Vercel** (`vercel.json` included):
-  Run `npx vercel` or connect your GitHub repository to [Vercel](https://vercel.com). In your project settings, add your custom domain **`sky-runner-3d.com`**.
-- **Netlify** (`netlify.toml` included):
-  Drag-and-drop this project folder into [Netlify Drop](https://app.netlify.com/drop) or connect via Git, then set your custom domain to **`sky-runner-3d.com`**.
-- **GitHub Pages** (`CNAME` included):
-  Push this repository to GitHub and enable **GitHub Pages** in Repository Settings -> Pages. It will automatically bind **`sky-runner-3d.com`** with free automatic SSL certificates!
-
----
-
-### 5. Build a Standalone Windows Executable (.exe)
-Run:
+### 3. Build Standalone Windows .exe
 ```cmd
 build_exe.bat
 ```
-Packages the entire game into `dist\SkyRunner3D\SkyRunner3D.exe`.
+
+---
+
+## ☁️ Free-Tier Supabase Backend Setup
+
+To connect your own free Supabase project:
+1. Create a free account at [supabase.com](https://supabase.com).
+2. Create a new project.
+3. Open the **SQL Editor** in Supabase and paste the contents of `supabase_schema.sql`, then click **Run**.
+4. In Supabase **Project Settings -> API**, copy your **Project URL** and **anon public key**.
+5. Paste them into `js/config.js` under `window.GAME_CONFIG.SUPABASE`.
+6. That's it! Leaderboards and Realtime Multiplayer are live globally!
+
+---
+
+## 🌐 Free Deployments (Vercel & Netlify)
+
+- **Vercel**: Pre-configured via `vercel.json` (`outputDirectory: "static"`).
+- **Netlify**: Pre-configured via `netlify.toml` (`publish = "static"`).
+- **GitHub Pages**: Pre-configured with `CNAME` for `sky-runner-3d.com`.

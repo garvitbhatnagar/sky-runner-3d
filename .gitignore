@@ -1,0 +1,4 @@
+.vercel
+backup_original
+__pycache__
+*.pyc

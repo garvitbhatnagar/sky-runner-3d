@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Sky Runner 3D - Endless Horizon</title>
+    <title>SKY RUNNER 3D – Endless Horizon</title>
 
     <!-- Mobile & PWA Optimization -->
     <meta name="theme-color" content="#0a0e17">
@@ -23,45 +23,79 @@
     <!-- UI Overlay Layer -->
     <div class="ui-layer">
 
-        <!-- 1. START MENU -->
+        <!-- 1. PROFESSIONAL MAIN MENU -->
         <div id="start-menu" class="interactive">
             <div class="menu-card">
                 <div class="game-logo">
-                    <span class="logo-badge">⚡ 3D Physics Runner</span>
+                    <span class="logo-badge">⚡ Commercial 3D Physics Runner</span>
                     <h1 class="game-title">SKY RUNNER</h1>
-                    <span class="game-subtitle">Endless Horizon • Infinite Levels (1 → ∞)</span>
+                    <span class="game-subtitle">Endless Horizon • 10 3D Worlds</span>
                 </div>
 
-                <div class="high-score-chip">
-                    <span>🏆 High Score:</span>
-                    <span id="menu-high-score">0</span>
+                <!-- Status Chips: High Score & Gold Coins -->
+                <div class="menu-stats-bar">
+                    <div class="high-score-chip">
+                        <span>🏆 High Score:</span>
+                        <span id="menu-high-score">0</span>
+                    </div>
+                    <div class="coins-chip">
+                        <span>🪙 Coins:</span>
+                        <span id="menu-coin-balance">0</span>
+                    </div>
                 </div>
 
+                <!-- Main Menu Action Buttons -->
                 <div class="menu-buttons">
-                    <button id="btn-start" class="btn-primary" aria-label="Start Game">
-                        <span>▶</span> START GAME
+                    <button id="btn-start" class="btn-primary" aria-label="Play Game">
+                        <span>▶</span> PLAY GAME
                     </button>
-                    <button id="btn-quit" class="btn-danger" aria-label="Quit Game">
-                        <span>✕</span> QUIT GAME
+                    <button id="btn-menu-mp" class="btn-primary btn-mp-glow" aria-label="Online Multiplayer">
+                        <span>🌐</span> MULTIPLAYER (4P)
                     </button>
+                    <div class="menu-button-row">
+                        <button id="btn-menu-leaderboard" class="btn-secondary" aria-label="Leaderboard">
+                            <span>🏆</span> LEADERBOARD
+                        </button>
+                        <button id="btn-menu-rewards" class="btn-secondary" aria-label="Daily Rewards">
+                            <span>🎁</span> DAILY REWARDS
+                        </button>
+                    </div>
+                    <div class="menu-button-row">
+                        <button id="btn-menu-skins" class="btn-secondary" aria-label="Character Selection">
+                            <span>👤</span> CHARACTERS
+                        </button>
+                        <button id="btn-menu-shop" class="btn-secondary" aria-label="Coin Shop">
+                            <span>🛒</span> COIN SHOP
+                        </button>
+                    </div>
+                    <div class="menu-button-row">
+                        <button id="btn-menu-settings" class="btn-secondary" aria-label="Settings">
+                            <span>⚙️</span> SETTINGS
+                        </button>
+                        <button id="btn-quit" class="btn-danger" aria-label="Quit Game">
+                            <span>✕</span> QUIT
+                        </button>
+                    </div>
                 </div>
 
+                <!-- Audio Toggles -->
                 <div class="audio-toggles">
                     <button id="btn-music-toggle" class="btn-audio">🎵 Music: ON</button>
                     <button id="btn-sfx-toggle" class="btn-audio">🔊 SFX: ON</button>
                 </div>
 
+                <!-- Quick Controls Guide -->
                 <div class="controls-guide">
                     <div class="guide-row">
                         <span>Steer Lanes:</span>
                         <span><span class="guide-key">A</span> / <span class="guide-key">D</span> or <span class="guide-key">◀</span> <span class="guide-key">▶</span> or <span class="guide-key">Swipe</span></span>
                     </div>
                     <div class="guide-row">
-                        <span>Jump Over Rocks:</span>
+                        <span>Jump Rocks & Hurdles:</span>
                         <span><span class="guide-key">Space</span> / <span class="guide-key">W</span> or <span class="guide-key">Swipe Up</span></span>
                     </div>
                     <div class="guide-row">
-                        <span>Slide / Duck:</span>
+                        <span>Slide / Duck Laser Gates:</span>
                         <span><span class="guide-key">S</span> or <span class="guide-key">Swipe Down</span></span>
                     </div>
                 </div>
@@ -71,11 +105,11 @@
         <!-- 2. IN-GAME HUD -->
         <div id="hud" class="hidden">
             <div class="hud-top-bar interactive">
-                <!-- Level Progress -->
+                <!-- Level Progress & Environment Badge -->
                 <div class="hud-level-container">
                     <div class="level-header">
                         <span id="hud-level">LVL 1</span>
-                        <span>ENDLESS ∞</span>
+                        <span id="hud-env-name">🌲 Green Forest</span>
                     </div>
                     <div class="level-progress-track">
                         <div id="hud-level-bar" class="level-progress-fill"></div>
@@ -109,6 +143,15 @@
                     </div>
                 </div>
 
+                <!-- Speedometer -->
+                <div class="hud-chip hud-speed-chip">
+                    <span class="chip-icon">⚡</span>
+                    <div class="chip-data">
+                        <span class="chip-label">Speed</span>
+                        <span id="hud-speed" class="chip-value">72 km/h</span>
+                    </div>
+                </div>
+
                 <!-- Pause Button -->
                 <button id="btn-pause" class="btn-icon" aria-label="Pause">❚❚</button>
             </div>
@@ -116,6 +159,12 @@
             <!-- Level Up Toast Notification -->
             <div id="level-up-toast" class="hidden">
                 ⚡ LEVEL 2 - SPEED BOOST! ⚡
+            </div>
+
+            <!-- Live Multiplayer Race Standings HUD -->
+            <div id="mp-race-hud" class="mp-race-hud hidden">
+                <div class="mp-race-header">🏁 RACE STANDINGS</div>
+                <div id="mp-race-standings" class="mp-race-list"></div>
             </div>
 
             <!-- Mobile Touch Controls for Phones & Tablets -->
@@ -163,7 +212,7 @@
                         <span id="go-distance" class="stat-val">0m</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-label">Coins</span>
+                        <span class="stat-label">Coins Collected</span>
                         <span id="go-coins" class="stat-val" style="color:#ffd700;">0</span>
                     </div>
                 </div>
@@ -180,14 +229,53 @@
             </div>
         </div>
 
+        <!-- 5. GLOBAL ONLINE LEADERBOARD MODAL -->
+        <div id="modal-leaderboard" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 6. 7-DAY DAILY REWARDS MODAL -->
+        <div id="modal-rewards" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 7. COIN SHOP & 3D CHARACTER PREVIEW MODAL -->
+        <div id="modal-shop" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 8. GAME SETTINGS MODAL -->
+        <div id="modal-settings" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 9. MULTIPLAYER ROOM & DIALOG MODAL -->
+        <div id="modal-multiplayer" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 10. MULTIPLAYER LOBBY MODAL -->
+        <div id="multiplayer-lobby" class="modal-backdrop interactive hidden"></div>
+
+        <!-- 11. MULTIPLAYER COUNTDOWN OVERLAY -->
+        <div id="mp-countdown-overlay" class="mp-countdown-overlay hidden">
+            <span id="mp-count-digit" class="mp-count-digit">3</span>
+        </div>
+
+        <!-- 12. MULTIPLAYER RESULTS MODAL -->
+        <div id="mp-results-modal" class="modal-backdrop interactive hidden">
+            <div class="modal-content mp-results-content">
+                <span class="modal-badge">🏁 RACE FINISHED</span>
+                <h2 class="modal-title">MULTIPLAYER RESULTS</h2>
+                <div id="mp-results-list" class="mp-results-list"></div>
+                <button id="btn-mp-results-menu" class="btn-primary" style="margin-top:20px;">RETURN TO LOBBY</button>
+            </div>
+        </div>
+
     </div>
 
-    <!-- 3D Engine & Scripts (100% Offline Capable) -->
+    <!-- 3D Engine & Scripts (Zero-dependency offline capable + Supabase) -->
     <script src="js/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
     <script src="js/audio.js"></script>
     <script src="js/physics.js"></script>
-    <script src="js/world.js"></script>
     <script src="js/player.js"></script>
+    <script src="js/world.js"></script>
+    <script src="js/rewards.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/multiplayer.js"></script>
     <script src="js/game.js"></script>
 </body>
 </html>
