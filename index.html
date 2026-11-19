@@ -10,6 +10,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Sky Runner 3D">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="manifest" href="manifest.json">
 
     <!-- CSS Styling -->
@@ -156,6 +158,9 @@
                 <button id="btn-pause" class="btn-icon" aria-label="Pause">❚❚</button>
             </div>
 
+            <!-- Active Power-Ups HUD Display -->
+            <div id="hud-powerups" class="hud-powerups"></div>
+
             <!-- Level Up Toast Notification -->
             <div id="level-up-toast" class="hidden">
                 ⚡ LEVEL 2 - SPEED BOOST! ⚡
@@ -165,18 +170,6 @@
             <div id="mp-race-hud" class="mp-race-hud hidden">
                 <div class="mp-race-header">🏁 RACE STANDINGS</div>
                 <div id="mp-race-standings" class="mp-race-list"></div>
-            </div>
-
-            <!-- Mobile Touch Controls for Phones & Tablets -->
-            <div class="mobile-controls interactive">
-                <div class="touch-cluster">
-                    <button id="touch-left" class="touch-btn" aria-label="Steer Left">◀</button>
-                    <button id="touch-right" class="touch-btn" aria-label="Steer Right">▶</button>
-                </div>
-                <div class="touch-cluster">
-                    <button id="touch-slide" class="touch-btn" aria-label="Slide">▼</button>
-                    <button id="touch-jump" class="touch-btn" aria-label="Jump">▲</button>
-                </div>
             </div>
         </div>
 
@@ -266,6 +259,7 @@
 
     <!-- 3D Engine & Scripts (Zero-dependency offline capable + Supabase) -->
     <script src="js/three.min.js"></script>
+    <script src="js/postprocessing.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/audio.js"></script>
@@ -277,5 +271,12 @@
     <script src="js/leaderboard.js"></script>
     <script src="js/multiplayer.js"></script>
     <script src="js/game.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+    </script>
 </body>
 </html>
